@@ -1,0 +1,10 @@
+section.header {
+    display: flex;
+    justify-content: space-between;
+    width: 700px;
+}
+
+section.header div.header {
+    font-weight: bold;
+    font-size: 40px;
+}
