@@ -1,5 +1,6 @@
 section.add-todo {
     margin-top: 20px;
+    margin-bottom: 20px;
     width: 700px;
     height: 48px;
     display: flex;

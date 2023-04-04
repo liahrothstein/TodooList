@@ -1,14 +1,11 @@
-import { useState } from 'react';
 import './amount.css';
 
-export const Amount = () => {
-    const [activeTodos, setActiveTodos] = useState(0);
-    const [doneTodos, setDoneTodos] = useState(0);
+export const Amount = (props) => {
 
     return (
         <section className="amount">
-            <div className="activeTodos">Ещё {activeTodos} {(activeTodos === 0) ? 'дел' : (activeTodos === 1) ? 'дело' : 'дел(-а)'}, которые нужно сделать, </div>
-            <div className="doneTodos">{doneTodos} выполнено</div>
+            <div className="activeTodos">Ещё {props.active} {(props.active === 0) ? 'дел' : (props.active === 1) ? 'дело' : 'дел(-а)'}, которые нужно сделать, </div>
+            <div className="doneTodos">{props.done} выполнено</div>
         </section>
     );
 }
