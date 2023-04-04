@@ -1,0 +1,23 @@
+section.add-todo {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 700px;
+    height: 48px;
+    display: flex;
+}
+
+section.add-todo input {
+    width: 330px;
+    padding-left: 20px;
+    font-size: 22px;
+    margin-right: 14px;
+    border-radius: 5px;
+}
+
+section.add-todo button {
+    height: 48px;
+    font-size: 22px;
+    cursor: pointer;
+    padding: 0 20px;
+    border-radius: 5px;
+}
