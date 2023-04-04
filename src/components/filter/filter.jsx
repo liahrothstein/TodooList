@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './filter.css'
 
 export const Filter = (props) => {
@@ -23,6 +23,24 @@ export const Filter = (props) => {
             props.setFilter(todos.filter((todo) => (todo.status === 'complete')))
         )
     }
+
+    const filterSearch = (searchText, array) => {
+        if (!searchText) return array;
+
+        return (
+            array?.filter(({ name }) => (name.toLowerCase().includes(searchText.toLowerCase())))
+        )
+    }
+
+    useEffect(() => {
+        const debounce = setTimeout(() => {
+            const filteredBooks = filterSearch(search, props.filter);
+
+            props.setFilter(filteredBooks);
+        }, 300)
+
+        return () => (clearTimeout(debounce))
+    }, [search, props.filter]);
 
     return (
         <section className="filter">

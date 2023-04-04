@@ -16,6 +16,18 @@ export const Todos = (props) => {
         );
     }
 
+    const deleteTodos = (status, index) => {
+        if (status === 'active') {
+            props.setActive(props.active - 1);
+        } else {
+            props.setDone(props.done - 1);
+        }
+
+        return (
+            props.setTodos((todo) => (todo.slice(0, index).concat(todo.slice(index + 1))))
+        )
+    }
+
     return (
         <section className="todos">
             {((props.activeBtn === 1) ? props.todos : (props.activeBtn === 2) ? props.filter : props.filter).map((e, i) => (
@@ -30,7 +42,7 @@ export const Todos = (props) => {
                         <button
                             className='delete'
                             type='button'
-                            onClick={() => (props.setTodos((todo) => (todo.slice(0, i).concat(todo.slice(i + 1)))))}>
+                            onClick={() => (deleteTodos(e.status, i))}>
                             <img src={deleteTodo} alt="" />
                         </button>
                     </div>
