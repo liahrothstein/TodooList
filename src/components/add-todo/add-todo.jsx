@@ -13,10 +13,10 @@ export const AddTodo = (props) => {
     const pushTodo = (TodoName) => {
         setAddTodo('');
         props.setActive(props.active + 1);
-        props.setFilter((todos) => todos.concat({ name: TodoName, status: 'active' }));
+        props.setFilter((todos) => todos.concat({ title: TodoName, completed: false }));
 
         return (
-            props.setTodos((todos) => todos.concat({ name: TodoName, status: 'active' }))
+            props.setTodos((todos) => todos.concat({ title: TodoName, completed: false }))
         );
     }
 

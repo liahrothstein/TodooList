@@ -13,14 +13,14 @@ export const Filter = (props) => {
         props.setActiveBtn(2);
 
         return (
-            props.setFilter(todos.filter((todo) => (todo.status === 'active')))
+            props.setFilter(todos.filter((todo) => (todo.completed === false)))
         )
     }
     const filterDone = (todos) => {
         props.setActiveBtn(3);
 
         return (
-            props.setFilter(todos.filter((todo) => (todo.status === 'complete')))
+            props.setFilter(todos.filter((todo) => (todo.completed === true)))
         )
     }
 
@@ -28,7 +28,7 @@ export const Filter = (props) => {
         if (!searchText) return array;
 
         return (
-            array?.filter(({ name }) => (name.toLowerCase().includes(searchText.toLowerCase())))
+            array?.filter(({ title }) => (title.toLowerCase().includes(searchText.toLowerCase())))
         )
     }
 
