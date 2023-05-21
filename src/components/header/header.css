@@ -9,3 +9,10 @@ section.header div.header {
     font-weight: bold;
     font-size: 40px;
 }
+
+@media (max-width: 767px) {
+    section.header {
+        width: 90vw;
+        flex-wrap: wrap;
+    }
+}

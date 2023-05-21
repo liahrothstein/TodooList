@@ -10,8 +10,8 @@ export default function App(props) {
   const [secondData, setSecondData] = useState(props.data);
   const [filteredData, setFilteredData] = useState(secondData);
 
-  const [activeTodos, setActiveTodos] = useState(0);
-  const [doneTodos, setDoneTodos] = useState(0);
+  const [activeTodos, setActiveTodos] = useState(props.data.filter((amount) => (amount.completed === false)).length);
+  const [doneTodos, setDoneTodos] = useState(props.data.filter((amount) => (amount.completed === true)).length);
 
   const [activeButton, setActiveButton] = useState(1);
 
