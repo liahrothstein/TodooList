@@ -5,3 +5,10 @@ div.App {
     align-items: center;
     height: 100vh;
 }
+
+@media (max-width: 768px) {
+    div.App {
+        width: 90vw;
+        margin: 0 auto;
+    }
+}

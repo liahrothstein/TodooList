@@ -5,12 +5,13 @@ import { Filter } from './components/filter/filter';
 import { Header } from './components/header/header';
 import { Todos } from './components/todos/todos';
 
-export default function App() {
-  const [data, setData] = useState([]);
-  const [filteredData, setFilteredData] = useState(data);
+export default function App(props) {
 
-  const [activeTodos, setActiveTodos] = useState(0);
-  const [doneTodos, setDoneTodos] = useState(0);
+  const [secondData, setSecondData] = useState(props.data);
+  const [filteredData, setFilteredData] = useState(secondData);
+
+  const [activeTodos, setActiveTodos] = useState(props.data.filter((amount) => (amount.completed === false)).length);
+  const [doneTodos, setDoneTodos] = useState(props.data.filter((amount) => (amount.completed === true)).length);
 
   const [activeButton, setActiveButton] = useState(1);
 
@@ -22,15 +23,15 @@ export default function App() {
         done={doneTodos}
         setDone={setDoneTodos} />
       <Filter
-        todos={data}
-        setTodos={setData}
+        todos={secondData}
+        setTodos={setSecondData}
         filter={filteredData}
         setFilter={setFilteredData}
         activeBtn={activeButton}
         setActiveBtn={setActiveButton} />
       <Todos
-        todos={data}
-        setTodos={setData}
+        todos={secondData}
+        setTodos={setSecondData}
         activeBtn={activeButton}
         filter={filteredData}
         setFilter={setFilteredData}
@@ -39,8 +40,8 @@ export default function App() {
         done={doneTodos}
         setDone={setDoneTodos} />
       <AddTodo
-        todos={data}
-        setTodos={setData}
+        todos={secondData}
+        setTodos={setSecondData}
         active={activeTodos}
         setActive={setActiveTodos}
         filter={filteredData}
