@@ -15,6 +15,8 @@ export default function App(props) {
 
   const [activeButton, setActiveButton] = useState(1);
 
+  const [search, setSearch] = useState('');
+
   return (
     <div className="App">
       <Header
@@ -28,7 +30,9 @@ export default function App(props) {
         filter={filteredData}
         setFilter={setFilteredData}
         activeBtn={activeButton}
-        setActiveBtn={setActiveButton} />
+        setActiveBtn={setActiveButton}
+        search={search}
+        setSearch={setSearch} />
       <Todos
         todos={secondData}
         setTodos={setSecondData}
@@ -38,7 +42,9 @@ export default function App(props) {
         active={activeTodos}
         setActive={setActiveTodos}
         done={doneTodos}
-        setDone={setDoneTodos} />
+        setDone={setDoneTodos}
+        search={search}
+        setSearch={setSearch} />
       <AddTodo
         todos={secondData}
         setTodos={setSecondData}

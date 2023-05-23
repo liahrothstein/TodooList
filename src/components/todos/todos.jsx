@@ -30,24 +30,27 @@ export const Todos = (props) => {
 
     return (
         <section className="todos">
-            {((props.activeBtn === 1) ? props.todos : (props.activeBtn === 2) ? props.filter : props.filter).map((e, i) => (
-                <div className="todo" key={i}>
-                    <div className="todoName">{e.title}</div>
-                    <div className="buttons">
-                        <button
-                            type='button'
-                            onClick={() => (activeToComplete(e.completed, i, e.title))}>
-                            <img src={(e.completed === false) ? activeTodo : completeTodo} alt="" />
-                        </button>
-                        <button
-                            className='delete'
-                            type='button'
-                            onClick={() => (deleteTodos(e.completed, i))}>
-                            <img src={deleteTodo} alt="" />
-                        </button>
-                    </div>
-                </div>
-            ))}
+            {(((props.activeBtn === 1) && (props.search === '')) ? props.todos :
+                ((props.activeBtn === 1) && (props.search !== '')) ? props.filter :
+                    ((props.activeBtn === 2) && (props.search !== '')) ? props.filter :
+                        ((props.activeBtn === 3) && (props.search !== '')) ? props.filter : props.filter).map((e, i) => (
+                            <div className="todo" key={i}>
+                                <div className="todoName">{e.title}</div>
+                                <div className="buttons">
+                                    <button
+                                        type='button'
+                                        onClick={() => (activeToComplete(e.completed, i, e.title))}>
+                                        <img src={(e.completed === false) ? activeTodo : completeTodo} alt="" />
+                                    </button>
+                                    <button
+                                        className='delete'
+                                        type='button'
+                                        onClick={() => (deleteTodos(e.completed, i))}>
+                                        <img src={deleteTodo} alt="" />
+                                    </button>
+                                </div>
+                            </div>
+                        ))}
         </section>
     );
 }
