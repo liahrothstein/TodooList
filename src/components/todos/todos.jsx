@@ -1,3 +1,5 @@
+import { useCallback } from 'react';
+import { Illumination } from '../illumination/illumination';
 import deleteTodo from '../../assets/delete.png';
 import activeTodo from '../../assets/active.png';
 import completeTodo from '../../assets/complete.png';
@@ -28,6 +30,8 @@ export const Todos = (props) => {
         )
     }
 
+    const textIllumination = useCallback((string) => <Illumination filter={props.search} string={string} />, [props.search])
+
     return (
         <section className="todos">
             {(((props.activeBtn === 1) && (props.search === '')) ? props.todos :
@@ -35,7 +39,7 @@ export const Todos = (props) => {
                     ((props.activeBtn === 2) && (props.search !== '')) ? props.filter :
                         ((props.activeBtn === 3) && (props.search !== '')) ? props.filter : props.filter).map((e, i) => (
                             <div className="todo" key={i}>
-                                <div className="todoName">{e.title}</div>
+                                <div className="todoName">{textIllumination(e.title)}</div>
                                 <div className="buttons">
                                     <button
                                         type='button'
