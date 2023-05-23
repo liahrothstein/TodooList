@@ -1,13 +1,13 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import './filter.css'
 
 export const Filter = (props) => {
-    const [search, setSearch] = useState('');
 
     const filterAll = (todos) => {
         props.setActiveBtn(1);
+        props.setFilter(todos);
 
-        return todos
+        return todos;
     }
     const filterActive = (todos) => {
         props.setActiveBtn(2);
@@ -24,8 +24,9 @@ export const Filter = (props) => {
         )
     }
 
-    const filterSearch = (searchText, array) => {
-        if (!searchText) return array;
+    const filterSearch = (searchText, array, filteredArray) => {
+        if (!searchText && props.activeBtn === 3) return filteredArray.filter((todo) => (todo.completed === true));
+        if (!searchText && props.activeBtn === 2) return filteredArray.filter((todo) => (todo.completed === false));
 
         return (
             array?.filter(({ title }) => (title.toLowerCase().includes(searchText.toLowerCase())))
@@ -34,21 +35,21 @@ export const Filter = (props) => {
 
     useEffect(() => {
         const debounce = setTimeout(() => {
-            const filteredBooks = filterSearch(search, props.filter);
+            const filteredBooks = filterSearch(props.search, props.filter, props.todos);
 
             props.setFilter(filteredBooks);
         }, 300)
 
         return () => (clearTimeout(debounce))
-    }, [search, props.filter]);
+    }, [props.search, props.filter]);
 
     return (
         <section className="filter">
             <input
                 type="text"
                 placeholder='Введите сюда для поиска'
-                value={search}
-                onChange={(e) => (setSearch(e.target.value))} />
+                value={props.search}
+                onChange={(e) => (props.setSearch(e.target.value))} />
             <div className="buttons">
                 <button
                     type='button'
