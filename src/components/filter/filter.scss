@@ -1,0 +1,59 @@
+$tablet: 767px;
+
+section.filter {
+    margin-top: 20px;
+    width: 700px;
+    height: 48px;
+    display: flex;
+    justify-content: space-between;
+
+    input {
+        width: 330px;
+        padding-left: 20px;
+        font-size: 22px;
+        border-radius: 5px;
+
+        @media (max-width: $tablet) {
+            width: 90vw;
+            padding-left: 14px;
+        }
+    }
+
+    div.buttons {
+        width: 330px;
+
+        button {
+            height: 48px;
+            font-size: 22px;
+            cursor: pointer;
+            border-radius: 1px;
+
+            &:first-child {
+                border-bottom-left-radius: 5px;
+                border-top-left-radius: 5px;
+            }
+
+            &:last-child {
+                border-bottom-right-radius: 5px;
+                border-top-right-radius: 5px;
+            }
+
+            &.active {
+                background: #17a2b8;
+                border-color: #17a2b8;
+                color: white;
+            }
+        }
+
+        @media (max-width: $tablet) {
+            width: 90vw;
+            margin-top: 20px;
+        }
+    }
+
+    @media (max-width: $tablet) {
+        flex-wrap: wrap;
+        width: 90vw;
+        height: 148px;
+    }
+}

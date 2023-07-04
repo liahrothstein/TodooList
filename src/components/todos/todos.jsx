@@ -3,7 +3,7 @@ import { Illumination } from '../illumination/illumination';
 import deleteTodo from '../../assets/delete.png';
 import activeTodo from '../../assets/active.png';
 import completeTodo from '../../assets/complete.png';
-import './todos.css';
+import './todos.scss';
 
 export const Todos = (props) => {
     const activeToComplete = (status, index, todoName) => {

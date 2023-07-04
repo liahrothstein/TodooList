@@ -1,17 +1,17 @@
+$tablet: 767px;
+
 section.header {
     display: flex;
     justify-content: space-between;
     width: 700px;
     margin-top: 20px;
-}
 
-section.header div.header {
-    font-weight: bold;
-    font-size: 40px;
-}
+    div.header {
+        font-weight: bold;
+        font-size: 40px;
+    }
 
-@media (max-width: 767px) {
-    section.header {
+    @media (max-width: $tablet) {
         width: 90vw;
         flex-wrap: wrap;
     }
