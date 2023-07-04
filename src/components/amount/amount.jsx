@@ -1,4 +1,4 @@
-import './amount.css';
+import './amount.scss';
 
 export const Amount = (props) => {
 

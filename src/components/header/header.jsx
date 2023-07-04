@@ -1,5 +1,5 @@
 import { Amount } from '../amount/amount';
-import './header.css';
+import './header.scss';
 
 export const Header = (props) => {
 
