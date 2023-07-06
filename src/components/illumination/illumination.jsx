@@ -1,7 +1,6 @@
 import React from "react";
 
-export const Illumination = (props) => {
-    const { filter, string } = props;
+export const Illumination = ({ filter, string }) => {
 
     if (!filter) return string;
     const regularExp = new RegExp(filter, 'ig');

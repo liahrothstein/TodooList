@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import './App.css';
 import { AddTodo } from './components/add-todo/add-todo';
 import { Filter } from './components/filter/filter';
 import { Header } from './components/header/header';
 import { Todos } from './components/todos/todos';
+import './App.css';
 
 export default function App({ data }) {
 
@@ -21,12 +21,9 @@ export default function App({ data }) {
     <div className="App">
       <Header
         active={activeTodos}
-        setActive={setActiveTodos}
-        done={doneTodos}
-        setDone={setDoneTodos} />
+        done={doneTodos} />
       <Filter
         todos={secondData}
-        setTodos={setSecondData}
         filter={filteredData}
         setFilter={setFilteredData}
         activeBtn={activeButton}
@@ -43,14 +40,11 @@ export default function App({ data }) {
         setActive={setActiveTodos}
         done={doneTodos}
         setDone={setDoneTodos}
-        search={search}
-        setSearch={setSearch} />
+        search={search} />
       <AddTodo
-        todos={secondData}
         setTodos={setSecondData}
         active={activeTodos}
         setActive={setActiveTodos}
-        filter={filteredData}
         setFilter={setFilteredData} />
     </div>
   );

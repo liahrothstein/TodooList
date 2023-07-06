@@ -5,39 +5,39 @@ import activeTodo from '../../assets/active.png';
 import completeTodo from '../../assets/complete.png';
 import './todos.scss';
 
-export const Todos = (props) => {
+export const Todos = ({ todos, setTodos, activeBtn, filter, setFilter, active, setActive, done, setDone, search }) => {
     const activeToComplete = (status, index, todoName) => {
         if (status === false) {
-            props.setActive(props.active - 1);
-            props.setDone(props.done + 1);
+            setActive(active - 1);
+            setDone(done + 1);
         }
-        props.setFilter((todo) => (todo.slice(0, index).concat({ title: todoName, completed: true }).concat(todo.slice(index + 1))))
+        setFilter((todo) => (todo.slice(0, index).concat({ title: todoName, completed: true }).concat(todo.slice(index + 1))))
 
         return (
-            props.setTodos((todo) => (todo.slice(0, index).concat({ title: todoName, completed: true }).concat(todo.slice(index + 1))))
+            setTodos((todo) => (todo.slice(0, index).concat({ title: todoName, completed: true }).concat(todo.slice(index + 1))))
         );
     }
 
     const deleteTodos = (status, index) => {
         if (status === false) {
-            props.setActive(props.active - 1);
+            setActive(active - 1);
         } else {
-            props.setDone(props.done - 1);
+            setDone(done - 1);
         }
 
         return (
-            props.setTodos((todo) => (todo.slice(0, index).concat(todo.slice(index + 1))))
+            setTodos((todo) => (todo.slice(0, index).concat(todo.slice(index + 1))))
         )
     }
 
-    const textIllumination = useCallback((string) => <Illumination filter={props.search} string={string} />, [props.search])
+    const textIllumination = useCallback((string) => <Illumination filter={search} string={string} />, [search])
 
     return (
         <section className="todos">
-            {(((props.activeBtn === 1) && (props.search === '')) ? props.todos :
-                ((props.activeBtn === 1) && (props.search !== '')) ? props.filter :
-                    ((props.activeBtn === 2) && (props.search !== '')) ? props.filter :
-                        ((props.activeBtn === 3) && (props.search !== '')) ? props.filter : props.filter).map((e, i) => (
+            {(((activeBtn === 1) && (search === '')) ? todos :
+                ((activeBtn === 1) && (search !== '')) ? filter :
+                    ((activeBtn === 2) && (search !== '')) ? filter :
+                        ((activeBtn === 3) && (search !== '')) ? filter : filter).map((e, i) => (
                             <div className="todo" key={i}>
                                 <div className="todoName">{textIllumination(e.title)}</div>
                                 <div className="buttons">

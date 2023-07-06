@@ -1,32 +1,32 @@
 import { useEffect } from 'react';
 import './filter.scss'
 
-export const Filter = (props) => {
+export const Filter = ({ todos, filter, setFilter, activeBtn, setActiveBtn, search, setSearch }) => {
 
     const filterAll = (todos) => {
-        props.setActiveBtn(1);
-        props.setFilter(todos);
+        setActiveBtn(1);
+        setFilter(todos);
 
         return todos;
     }
     const filterActive = (todos) => {
-        props.setActiveBtn(2);
+        setActiveBtn(2);
 
         return (
-            props.setFilter(todos.filter((todo) => (todo.completed === false)))
+            setFilter(todos.filter((todo) => (todo.completed === false)))
         )
     }
     const filterDone = (todos) => {
-        props.setActiveBtn(3);
+        setActiveBtn(3);
 
         return (
-            props.setFilter(todos.filter((todo) => (todo.completed === true)))
+            setFilter(todos.filter((todo) => (todo.completed === true)))
         )
     }
 
     const filterSearch = (searchText, array, filteredArray) => {
-        if (!searchText && props.activeBtn === 3) return filteredArray.filter((todo) => (todo.completed === true));
-        if (!searchText && props.activeBtn === 2) return filteredArray.filter((todo) => (todo.completed === false));
+        if (!searchText && activeBtn === 3) return filteredArray.filter((todo) => (todo.completed === true));
+        if (!searchText && activeBtn === 2) return filteredArray.filter((todo) => (todo.completed === false));
 
         return (
             array?.filter(({ title }) => (title.toLowerCase().includes(searchText.toLowerCase())))
@@ -35,34 +35,34 @@ export const Filter = (props) => {
 
     useEffect(() => {
         const debounce = setTimeout(() => {
-            const filteredBooks = filterSearch(props.search, props.filter, props.todos);
+            const filteredTodos = filterSearch(search, filter, todos);
 
-            props.setFilter(filteredBooks);
-        }, 300)
+            setFilter(filteredTodos);
+        }, 1000)
 
         return () => (clearTimeout(debounce))
-    }, [props.search, props.filter]);
+    }, [search, filter]);
 
     return (
         <section className="filter">
             <input
                 type="text"
                 placeholder='Введите сюда для поиска'
-                value={props.search}
-                onChange={(e) => (props.setSearch(e.target.value))} />
+                value={search}
+                onChange={(e) => (setSearch(e.target.value))} />
             <div className="buttons">
                 <button
                     type='button'
-                    onClick={() => (filterAll(props.todos))}
-                    className={(props.activeBtn === 1) ? 'active' : ''}>Все</button>
+                    onClick={() => (filterAll(todos))}
+                    className={(activeBtn === 1) ? 'active' : ''}>Все</button>
                 <button
                     type='button'
-                    onClick={() => (filterActive(props.todos))}
-                    className={(props.activeBtn === 2) ? 'active' : ''}>Активные</button>
+                    onClick={() => (filterActive(todos))}
+                    className={(activeBtn === 2) ? 'active' : ''}>Активные</button>
                 <button
                     type='button'
-                    onClick={() => (filterDone(props.todos))}
-                    className={(props.activeBtn === 3) ? 'active' : ''}>Выполненные</button>
+                    onClick={() => (filterDone(todos))}
+                    className={(activeBtn === 3) ? 'active' : ''}>Выполненные</button>
             </div>
         </section>
     );

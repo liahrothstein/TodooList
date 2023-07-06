@@ -1,12 +1,12 @@
 import { Amount } from '../amount/amount';
 import './header.scss';
 
-export const Header = (props) => {
+export const Header = ({ active, done }) => {
 
     return (
         <section className="header">
             <div className="header">Список дел</div>
-            <Amount active={props.active} setActive={props.setActive} done={props.done} setDone={props.setDone} />
+            <Amount active={active} done={done} />
         </section>
     );
 }

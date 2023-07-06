@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import './add-todo.scss';
 
-export const AddTodo = (props) => {
+export const AddTodo = ({ setTodos, active, setActive, setFilter }) => {
     const [addTodo, setAddTodo] = useState('');
 
     const activeButton = {
@@ -12,11 +12,11 @@ export const AddTodo = (props) => {
 
     const pushTodo = (TodoName) => {
         setAddTodo('');
-        props.setActive(props.active + 1);
-        props.setFilter((todos) => todos.concat({ title: TodoName, completed: false }));
+        setActive(active + 1);
+        setFilter((todos) => todos.concat({ title: TodoName, completed: false }));
 
         return (
-            props.setTodos((todos) => todos.concat({ title: TodoName, completed: false }))
+            setTodos((todos) => todos.concat({ title: TodoName, completed: false }))
         );
     }
 
@@ -26,6 +26,7 @@ export const AddTodo = (props) => {
                 type="text"
                 value={addTodo}
                 onChange={(e) => (setAddTodo(e.target.value))}
+                onKeyDown={(e) => { if (e.code === 'Enter' && addTodo !== '') pushTodo(addTodo) }}
                 placeholder='Что нужно сделать?' />
             <button
                 style={(addTodo !== '') ? activeButton : {}}

@@ -1,11 +1,11 @@
 import './amount.scss';
 
-export const Amount = (props) => {
+export const Amount = ({ active, done }) => {
 
     return (
         <section className="amount">
-            <div className="activeTodos">Ещё {props.active} {(props.active === 0) ? 'дел' : (props.active === 1) ? 'дело' : 'дел'}, которые нужно сделать, </div>
-            <div className="doneTodos">{props.done} выполнено</div>
+            <div className="activeTodos">Ещё {active} {(active === 0) ? 'дел' : (active === 1) ? 'дело' : 'дел'}, которые нужно сделать, </div>
+            <div className="doneTodos">{done} выполнено</div>
         </section>
     );
 }
