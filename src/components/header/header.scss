@@ -1,8 +1,7 @@
-$tablet: 767px;
+@use '../../sass/abstracts' as *;
 
 section.header {
-    display: flex;
-    justify-content: space-between;
+    @include spaceBetweenFlex();
     width: 700px;
     margin-top: 20px;
 
@@ -12,7 +11,7 @@ section.header {
     }
 
     @media (max-width: $tablet) {
-        width: 90vw;
+        width: $mobileContainerWidth;
         flex-wrap: wrap;
     }
 }

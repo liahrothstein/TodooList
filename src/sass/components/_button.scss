@@ -1,0 +1,8 @@
+@use '../abstracts' as *;
+
+button {
+    height: $defaultButtonHeight;
+    font-size: 22px;
+    cursor: pointer;
+    border-radius: 1px;
+}

@@ -3,7 +3,7 @@ import { AddTodo } from './components/add-todo/add-todo';
 import { Filter } from './components/filter/filter';
 import { Header } from './components/header/header';
 import { Todos } from './components/todos/todos';
-import './App.css';
+import './App.scss';
 
 export default function App({ data }) {
 
