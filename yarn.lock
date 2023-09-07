@@ -11518,7 +11518,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-scripts@npm:5.0.1":
+"react-scripts@npm:^5.0.1":
   version: 5.0.1
   resolution: "react-scripts@npm:5.0.1"
   dependencies:
@@ -13224,7 +13224,7 @@ __metadata:
     react: ^18.2.0
     react-dom: ^18.2.0
     react-redux: ^8.0.5
-    react-scripts: 5.0.1
+    react-scripts: ^5.0.1
     redux: ^4.2.1
     sass: ^1.63.6
     sass-loader: ^13.3.2

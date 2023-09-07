@@ -4,20 +4,15 @@ import './add-todo.scss';
 export const AddTodo = ({ setTodos, active, setActive, setFilter }) => {
     const [addTodo, setAddTodo] = useState('');
 
-    const activeButton = {
-        backgroundColor: '#17a2b8',
-        borderColor: '#17a2b8',
-        color: 'white'
-    };
-
     const pushTodo = (TodoName) => {
         setAddTodo('');
         setActive(active + 1);
         setFilter((todos) => todos.concat({ title: TodoName, completed: false }));
+        setTodos((todos) => todos.concat({ title: TodoName, completed: false }))
+    }
 
-        return (
-            setTodos((todos) => todos.concat({ title: TodoName, completed: false }))
-        );
+    const enterToPush = (event) => {
+        if (event.code === 'Enter' && addTodo !== '') pushTodo(addTodo)
     }
 
     return (
@@ -26,10 +21,10 @@ export const AddTodo = ({ setTodos, active, setActive, setFilter }) => {
                 type="text"
                 value={addTodo}
                 onChange={(e) => (setAddTodo(e.target.value))}
-                onKeyDown={(e) => { if (e.code === 'Enter' && addTodo !== '') pushTodo(addTodo) }}
+                onKeyDown={(e) => { enterToPush(e) }}
                 placeholder='Что нужно сделать?' />
             <button
-                style={(addTodo !== '') ? activeButton : {}}
+                className={(addTodo !== '') ? 'active' : ''}
                 onClick={() => (pushTodo(addTodo))}
                 type='button'
                 disabled={(addTodo === '') ? true : false}>Добавить задачу</button>

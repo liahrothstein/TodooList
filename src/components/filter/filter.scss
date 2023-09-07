@@ -22,8 +22,8 @@ section.filter {
             }
 
             &.active {
-                background: $lightBlue;
-                border-color: $lightBlue;
+                background: $activeButton;
+                border-color: $activeButton;
                 color: white;
             }
         }

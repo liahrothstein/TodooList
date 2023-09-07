@@ -19,6 +19,12 @@ section.add-todo {
     button {
         padding: 0 20px;
         border-radius: 5px;
+
+        &.active {
+            background-color: $activeButton;
+            border-color: $activeButton;
+            color: white;
+        }
     }
 
     @media (max-width: $tablet) {
