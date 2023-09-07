@@ -1,10 +1,4 @@
-$tablet: 767px;
-
-@mixin button () {
-    background: none;
-    border: none;
-    cursor: pointer;
-}
+@use '../../sass/abstracts' as *;
 
 section.todos {
     min-height: 73vh;
@@ -16,8 +10,7 @@ section.todos {
         border-radius: 5px;
         border: 2px solid gray;
         padding: 7px;
-        display: flex;
-        justify-content: space-between;
+        @include spaceBetweenFlex();
         align-items: center;
 
         div.todoName {
@@ -44,6 +37,6 @@ section.todos {
     }
 
     @media (max-width: $tablet) {
-        width: 90vw;
+        width: $mobileContainerWidth;
     }
 }

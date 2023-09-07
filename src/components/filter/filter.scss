@@ -1,33 +1,16 @@
-$tablet: 767px;
+@use '../../sass/abstracts' as *;
+@use '../../sass/components' as *;
 
 section.filter {
     margin-top: 20px;
     width: 700px;
     height: 48px;
-    display: flex;
-    justify-content: space-between;
-
-    input {
-        width: 330px;
-        padding-left: 20px;
-        font-size: 22px;
-        border-radius: 5px;
-
-        @media (max-width: $tablet) {
-            width: 90vw;
-            padding-left: 14px;
-        }
-    }
+    @include spaceBetweenFlex();
 
     div.buttons {
         width: 330px;
 
         button {
-            height: 48px;
-            font-size: 22px;
-            cursor: pointer;
-            border-radius: 1px;
-
             &:first-child {
                 border-bottom-left-radius: 5px;
                 border-top-left-radius: 5px;
@@ -39,21 +22,21 @@ section.filter {
             }
 
             &.active {
-                background: #17a2b8;
-                border-color: #17a2b8;
+                background: $activeButton;
+                border-color: $activeButton;
                 color: white;
             }
         }
 
         @media (max-width: $tablet) {
-            width: 90vw;
+            width: $mobileContainerWidth;
             margin-top: 20px;
         }
     }
 
     @media (max-width: $tablet) {
         flex-wrap: wrap;
-        width: 90vw;
+        width: $mobileContainerWidth;
         height: 148px;
     }
 }

@@ -1,0 +1,10 @@
+@mixin button() {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+@mixin spaceBetweenFlex() {
+    display: flex;
+    justify-content: space-between;
+}

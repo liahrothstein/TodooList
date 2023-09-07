@@ -1,0 +1,13 @@
+@use '../abstracts' as *;
+
+input {
+    width: 330px;
+    padding-left: 20px;
+    font-size: 22px;
+    border-radius: 5px;
+
+    @media (max-width: $tablet) {
+        padding-left: 14px;
+        width: 90vw;
+    }
+}
